@@ -1,0 +1,17 @@
+<section class="search-section">
+  <form class="search-form">
+    <input type="text" #filter placeholder="Nhập tên thành phố (vd: Chicago)..." class="search-input" />
+    <button (click)="filterResults(filter.value)" class="primary" type="button">Tìm kiếm</button>
+  </form>
+</section>
+
+<section class="results-grid">
+  @for (house of filteredLocationList; track house.id) {
+  <article class="listing">
+    <img [src]="house.photo" alt="Ảnh của {{ house.name }}" class="listing-photo" />
+    <h2 class="listing-heading">{{ house.name }}</h2>
+    <p class="listing-location">📍 {{ house.city }}, {{ house.state }}</p>
+    <a [routerLink]="['/details', house.id]" class="details-btn">Xem chi tiết</a>
+  </article>
+  }
+</section>
