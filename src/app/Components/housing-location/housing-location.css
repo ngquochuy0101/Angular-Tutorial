@@ -108,3 +108,37 @@
 .details-btn:hover {
   background-color: #bbdefb;
 }
+/* Trạng thái mặc định của hộp thông báo */
+.hop-thong-bao {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #f1c40f, #e67e22);
+  color: white;
+  padding: 15px 25px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  font-weight: bold;
+  z-index: 1000;
+}
+
+/* Kịch bản 1: Khi bay vào (Trượt từ phải sang) */
+.bay-vao {
+  animation: slideIn 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Kịch bản 2: Khi bay ra (Rơi rụng xuống dưới) */
+.bay-ra {
+  animation: dropDown 0.5s ease-in forwards;
+}
+
+/* Các lệnh điều khiển chuyển động */
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes dropDown {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(100%); opacity: 0; }
+}

@@ -1,7 +1,20 @@
+
+
+
+
+<!-- Hộp thông báo với phép thuật animate -->
+@if (hienThongBao()) {
+  <div class="hop-thong-bao" 
+       [animate.enter]="'bay-vao'" 
+       [animate.leave]="'bay-ra'">
+    🎉 Chào mừng bạn đến với Siêu Thị Nhà Đẹp!
+  </div>
+}
+
 <section class="search-section">
   <form class="search-form">
-    <input type="text" #filter placeholder="Nhập tên thành phố (vd: Chicago)..." class="search-input" />
-    <button (click)="filterResults(filter.value)" class="primary" type="button">Tìm kiếm</button>
+    <input type="text" (input)="tuKhoa.set(filter.value)" #filter placeholder="Nhập tên thành phố (vd: Chicago)..."
+      class="search-input" />
   </form>
 </section>
 
@@ -10,7 +23,7 @@
   <article class="listing">
     <img [src]="house.photo" alt="Ảnh của {{ house.name }}" class="listing-photo" />
     <h2 class="listing-heading">{{ house.name }}</h2>
-    <p class="listing-location">📍 {{ house.city }}, {{ house.state }}</p>
+    <p class="listing-location">📍 {{ house.city | uppercase}}, {{ house.state }}</p>
     <a [routerLink]="['/details', house.id]" class="details-btn">Xem chi tiết</a>
   </article>
   }
